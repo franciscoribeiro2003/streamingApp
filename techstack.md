@@ -1,4 +1,4 @@
-## Teck Stack
+## Tech Stack
 
 1. **Java:** The entire project is to be implemented using Java, which will serve as the primary programming language for both the backend and frontend components.
 
