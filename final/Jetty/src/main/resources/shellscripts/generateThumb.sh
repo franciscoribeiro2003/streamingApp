@@ -1,0 +1,1 @@
+ffmpeg -ss 00:00:10 -i "$1" -frames:v 1 "$2".jpeg

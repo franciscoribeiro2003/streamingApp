@@ -1,0 +1,1 @@
+rm gs://moviespdm/"$1".mp4

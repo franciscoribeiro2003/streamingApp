@@ -1,0 +1,1 @@
+cp "$1" gs://moviespdm

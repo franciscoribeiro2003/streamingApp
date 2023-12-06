@@ -1,0 +1,1 @@
+ffmpeg -i "$1" -vf scale=-1:360 -c:v libx264 -crf 0 -preset veryslow -c:a copy "$2"
