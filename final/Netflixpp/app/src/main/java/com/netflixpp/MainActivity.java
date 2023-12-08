@@ -1,7 +1,7 @@
 package com.netflixpp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MovieCatalogue.OnItemClickListener {
 
     ArrayList<Movie> movies= new ArrayList<>();
 
     Bitmap bitmap;
+    String imagePath;
 
 
     //int[] movie_images ={androidx.constraintlayout.widget.R.drawable.imgg.png };
@@ -26,10 +27,15 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.movies_rv);
 
-        bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.imgg);
+        //bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.imgg);
+        imagePath = "android.resource://" + getPackageName() + "/" + R.mipmap.imgg;
+
         setMovies();
 
         MovieCatalogue adapter = new MovieCatalogue(this,movies);
+
+        // Set the click listener for the adapter
+        adapter.setOnItemClickListener(this);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -46,7 +52,17 @@ public class MainActivity extends AppCompatActivity {
                     "120 min",
                     "Action",
                     "Its a movie about how to build your drug empire, inspired on a real life story of Barry Seal, a pilot that transport by air the major productions of Colombia cocaine during the 80's.",
-                    bitmap));
+                    imagePath,
+                    "https://archive.org/download/PopeyeAliBaba/PopeyeAliBaba_512kb.mp4",
+                    "https://archive.org/download/PopeyeAliBaba/PopeyeAliBaba_512kb.mp4"));
         }
+    }
+
+    @Override
+    public void onItemClick(Movie movie) {
+        // Handle item click, start new activity and pass Movie object
+        Intent intent = new Intent(this, VideoPlayerActivity.class);
+        intent.putExtra("MOVIE_OBJECT", movie); // Pass the selected Movie object
+        startActivity(intent);
     }
 }

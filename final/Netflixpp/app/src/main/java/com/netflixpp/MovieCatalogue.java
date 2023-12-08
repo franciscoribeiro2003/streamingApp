@@ -1,6 +1,7 @@
 package com.netflixpp;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class MovieCatalogue extends RecyclerView.Adapter<MovieCatalogue.MyViewHolder> {
@@ -17,10 +20,20 @@ public class MovieCatalogue extends RecyclerView.Adapter<MovieCatalogue.MyViewHo
 
     Context context;
     ArrayList<Movie> movies;
+    OnItemClickListener listener;
+
+
+    public interface OnItemClickListener {
+        void onItemClick(Movie movie);
+    }
 
     public MovieCatalogue(Context context, ArrayList<Movie> movies){
         this.context=context;
         this.movies=movies;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -37,7 +50,15 @@ public class MovieCatalogue extends RecyclerView.Adapter<MovieCatalogue.MyViewHo
         holder.duration.setText(movies.get(position).getDuration());
         holder.genre.setText(movies.get(position).getGenero());
         //holder.description.setText(movies.get(position).getDescription());
-        holder.imageview.setImageBitmap(movies.get(position).getImage());
+        // Load image using Glide from the provided path
+        String imagePath = movies.get(position).getImage();
+        Glide.with(context)
+                .load(Uri.parse(imagePath))
+                .into(holder.imageview);
+        holder.itemView.setOnClickListener(v -> {
+            // Pass the clicked Movie object to the listener
+            listener.onItemClick(movies.get(position));
+        });
     }
 
     @Override

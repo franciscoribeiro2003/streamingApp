@@ -1,17 +1,20 @@
 package com.netflixpp;
-import android.graphics.Bitmap;
 
-public class Movie {
-    String titlemovie, duration, genero, description;
-    Bitmap image;
+import java.io.Serializable;
+
+public class Movie implements Serializable {
+    String titlemovie, duration, genero, description, linklow, linkhigh, image;
+    //Bitmap image;
 
 
-    public Movie(String titlemovie, String duration, String genero, String description, Bitmap image) {
+    public Movie(String titlemovie, String duration, String genero, String description, String image,String linkl,String linkh) {
         this.titlemovie = titlemovie;
         this.duration = duration;
         this.genero = genero;
         this.description = description;
         this.image = image;
+        this.linklow=linkl;
+        this.linkhigh=linkh;
     }
 
     public String getTitlemovie() {
@@ -30,7 +33,11 @@ public class Movie {
         return description;
     }
 
-    public Bitmap getImage() {
+    public String getImage() {
         return image;
     }
+
+    public String getLinklow() {return linklow;}
+
+    public String getLinkhigh() {return linkhigh;}
 }
