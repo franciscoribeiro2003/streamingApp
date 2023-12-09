@@ -24,7 +24,7 @@ public class ConnectionDB {
         System.out.println("Opening");
         String user = "rick";
         String password = "morty";
-        String url = "jdbc:mysql://localhost:3306/netflixpp?serverTimezone=UTC";
+        String url = "jdbc:mysql://localhost:3306/BOOSBTV?serverTimezone=UTC";
         String driver = "com.mysql.cj.jdbc.Driver";
 
         try { // try import Mysql Driver
@@ -59,13 +59,21 @@ public class ConnectionDB {
     public static String getMovies() {
         try {
             PreparedStatement stm = connection.prepareStatement(
-                    "select name from movies"
+                    "select id,name,duration,genre,year,Descricao,Thumbnail,linklow,linkhigh,uploadedBy from MOVIE"
                     );
             ResultSet rs = stm.executeQuery();
-            StringBuilder movies = new StringBuilder("MOVIES:\n");
+            StringBuilder movies = new StringBuilder();
             while (rs.next()) {
-                movies.append(rs.getString("name")).append("\n");
-                System.out.println(rs.getString("name"));
+                movies.append(rs.getString("id")).append("; ");
+                movies.append(rs.getString("name")).append("; ");
+                movies.append(rs.getString("duration")).append("; ");
+                movies.append(rs.getString("genre")).append("; ");
+                movies.append(rs.getString("year")).append("; ");
+                movies.append(rs.getString("Descricao")).append("; ");
+                movies.append(rs.getString("Thumbnail")).append("; ");
+                movies.append(rs.getString("linklow")).append("; ");
+                movies.append(rs.getString("linkhigh")).append("; ");
+                movies.append(rs.getString("uploadedBy")).append("\n");
             }
             return movies.toString();
         } catch (SQLException e) {

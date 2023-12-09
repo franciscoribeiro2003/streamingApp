@@ -25,7 +25,7 @@ Create table movies (
     Foreign Key (uploadedBy) references user(username)
 );
 -- create a prompto insert the movie
---insert into movies (name, pathHigh, pathLow, poster, year, totaltime, linkLow, linkHigh, linkPoster, uploadedBy) values ('The Matrix', 'C:\Users\joaop\Documents\GitHub\NetflixPP\src\main\resources\static\videos\The Matrix.mp4', 'C:\Users\joaop\Documents\GitHub\NetflixPP\src\main\resources\static\videos\The Matrix.mp4', 'C:\Users\joaop\Documents\GitHub\NetflixPP\src\main\resources\static\videos\The Matrix.mp4', 1999, '02:16:00', 'http://localhost:8080/videos/The Matrix.mp4', 'http://localhost:8080/videos/The Matrix.mp4', 'http://localhost:8080/videos/The Matrix.mp4', 'corvo');
+-- insert into movies (name, pathHigh, pathLow, poster, year, totaltime, linkLow, linkHigh, linkPoster, uploadedBy) values ('The Matrix', 'C:\Users\joaop\Documents\GitHub\NetflixPP\src\main\resources\static\videos\The Matrix.mp4', 'C:\Users\joaop\Documents\GitHub\NetflixPP\src\main\resources\static\videos\The Matrix.mp4', 'C:\Users\joaop\Documents\GitHub\NetflixPP\src\main\resources\static\videos\The Matrix.mp4', 1999, '02:16:00', 'http://localhost:8080/videos/The Matrix.mp4', 'http://localhost:8080/videos/The Matrix.mp4', 'http://localhost:8080/videos/The Matrix.mp4', 'corvo');
 
 
 --Create table uploads (

@@ -9,12 +9,12 @@ import jakarta.ws.rs.core.MediaType;
 
 import static org.netflixpp.ConnectionDB.*;
 
-@Path("/movies")
+@Path("/movie")
 public class AccessMoviesDB {
 
     ObjectMapper map = new ObjectMapper();
 
-    @Path("/link")
+    @Path("/resources")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -26,4 +26,23 @@ public class AccessMoviesDB {
         closeDB();
         return movies;
     }
+
+
+
+
+    //Normal User
+    //Post .../user/create
+    //Post .../user/login
+    //Post ..../movie/search/
+    //Get .../movie
+
+
+
+
+
+    //Admin
+    //Post /movie/upload
+    //sem prioridade
+    //Post /movie/delete/
+    //Post /user/delete
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="netflixpp@localhost" uuid="4ea321a7-80d5-4822-b0a6-28412f7c883d">
+    <data-source source="LOCAL" name="BOOSBTV@localhost" uuid="c167be4f-876b-4fde-99bf-c68d478b68b6">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://localhost:3306/netflixpp</jdbc-url>
+      <jdbc-url>jdbc:mariadb://localhost:3306/BOOSBTV</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

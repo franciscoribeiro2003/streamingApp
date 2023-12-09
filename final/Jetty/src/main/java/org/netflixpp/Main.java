@@ -16,7 +16,7 @@ import static org.eclipse.jetty.servlet.ServletContextHandler.NO_SESSIONS;
 
 public class Main {
 
-    public static final String BASE_URI = "http://localhost:8080/";
+    public static final String BASE_URI = "http://192.168.0.173:8081/";
 
     public static Server startServer() {
         //final ResourceConfig config = new ResourceConfig().packages("com.netflixpp");
