@@ -6,6 +6,29 @@
     android:background="@color/dark_grey"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/header"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="61dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="95dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <EditText
         android:id="@+id/user"
         android:layout_width="350dp"
@@ -61,6 +84,7 @@
         android:layout_gravity="start"
         android:layout_marginTop="4dp"
         android:text="Login Page"
+        android:textColor="@color/white"
         android:backgroundTint="@color/red_button_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -75,6 +99,7 @@
         android:layout_marginTop="60dp"
         android:enabled="true"
         android:text="Register"
+        android:textColor="@color/white"
         android:backgroundTint="@color/red_button_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -42,7 +42,7 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //try {
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(),AdminMain.class));
                     finish();
                     //pushInfo();
                 //} catch (IOException e) {
