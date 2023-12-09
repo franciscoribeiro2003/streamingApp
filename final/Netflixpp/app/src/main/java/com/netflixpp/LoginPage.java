@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,12 +43,13 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //try {
-                    startActivity(new Intent(getApplicationContext(),AdminMain.class));
-                    finish();
-                    //pushInfo();
-                //} catch (IOException e) {
-                //    e.printStackTrace();
-                //}
+                    //startActivity(new Intent(getApplicationContext(),AdminMain.class));
+                    //finish();
+                try {
+                    pushInfo();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -67,7 +69,7 @@ public class LoginPage extends AppCompatActivity {
 
     public void pushInfo() throws IOException{
         URL url = null;
-        try {url = new URL("http://localhost/user/login");}
+        try {url = new URL("http://192.168.0.173:8081/user/login");}
         catch (MalformedURLException e ) {e.printStackTrace();}
 
         OkHttpClient client = new OkHttpClient();
@@ -87,6 +89,7 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
+                showToastError("Failure connecting with the server");
             }
 
             @Override
@@ -94,11 +97,11 @@ public class LoginPage extends AppCompatActivity {
                 if (response.code()==200){
                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     finish();
+                    showToast(user);
                 }
                 else{
                     Log.i("Wrong", "wrong user");
-                    startActivity(new Intent(getApplicationContext(),MovieCatalogue.class));
-                    finish();
+                    showToastError("Wrong Username and password");
                 }
             }
         });
@@ -106,9 +109,25 @@ public class LoginPage extends AppCompatActivity {
     }
 
     String toJson(String username, String password) {
-        return "{\n" + "\"username\"" + ":" + "\"" +  username + "\"" +  ",\n" +
-                "\"password\"" +":"+ "\"" + password + "\"\n" + "}";
+        return "username: " +  username +  "," +
+                "password: " + password + "\n";
 
+    }
+    public void showToast(final String Text){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(LoginPage.this,"Welcome "+ Text, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    public void showToastError(final String Text){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(LoginPage.this, Text, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }

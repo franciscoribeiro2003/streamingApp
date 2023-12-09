@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity implements MovieCatalogue.On
 
         RecyclerView recyclerView = findViewById(R.id.movies_rv);
 
-        //bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.imgg);
-        imagePath = "android.resource://" + getPackageName() + "/" + R.mipmap.imgg;
         Log.d("Situation", "Hereee ");
         setMovies();
 
@@ -47,16 +45,11 @@ public class MainActivity extends AppCompatActivity implements MovieCatalogue.On
 
         RecyclerView recyclerView = findViewById(R.id.movies_rv);
 
-        Log.d("Situation", "Hereee1 ");
         MovieCatalogue adapter = new MovieCatalogue(this,this.movies);
-        Log.d("Situation", "Hereee2 ");
         // Set the click listener for the adapter
         adapter.setOnItemClickListener(this);
-        Log.d("Situation", "Hereee3 ");
         recyclerView.setAdapter(adapter);
-        Log.d("Situation", "Hereee4 ");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Log.d("Situation", "Hereee5 ");
     }
 
 

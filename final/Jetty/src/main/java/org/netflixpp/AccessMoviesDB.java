@@ -19,8 +19,6 @@ public class AccessMoviesDB {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String getLink() {
-
-
         openDB();
         String movies = getMovies();
         closeDB();
@@ -31,8 +29,6 @@ public class AccessMoviesDB {
 
 
     //Normal User
-    //Post .../user/create
-    //Post .../user/login
     //Post ..../movie/search/
     //Get .../movie
 

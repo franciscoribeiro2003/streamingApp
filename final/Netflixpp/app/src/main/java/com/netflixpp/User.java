@@ -12,4 +12,40 @@ public class User {
     }
 
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setCreator(boolean creator) {
+        isCreator = creator;
+    }
+
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public boolean isCreator() {
+        return isCreator;
+    }
+
+
+
+
 }

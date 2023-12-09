@@ -20,7 +20,7 @@ public class Main {
 
     public static Server startServer() {
         //final ResourceConfig config = new ResourceConfig().packages("com.netflixpp");
-        final ResourceConfig config = new ResourceConfig(ConnectionDB.class, AccessMoviesDB.class);
+        final ResourceConfig config = new ResourceConfig(ConnectionDB.class, AccessMoviesDB.class, AccessUser.class);
         return JettyHttpContainerFactory.createServer(URI.create(BASE_URI), config);
 
     }
