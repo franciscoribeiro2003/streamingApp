@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements MovieCatalogue.On
         OkHttpClient client = new OkHttpClient();
     
         Request request = new Request.Builder()
-            .url("http://192.168.0.173:8081/movie/resources")
+            .url("http://192.168.0.127:8080/movie/resources")
             .build();
     
         client.newCall(request).enqueue(new Callback() {

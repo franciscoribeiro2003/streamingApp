@@ -8,7 +8,12 @@ public class User {
         this.id = id;
         this.fullName = fullName;
         this.username = username;
-        this.isCreator = Boolean.parseBoolean(isCreator);
+        if (isCreator.equals("1")) {
+            this.isCreator = true;
+        }
+        else {
+            this.isCreator = false;
+        }
     }
 
 
@@ -41,9 +46,7 @@ public class User {
         return username;
     }
 
-    public boolean isCreator() {
-        return isCreator;
-    }
+    public boolean isCreator() {return isCreator;}
 
 
 

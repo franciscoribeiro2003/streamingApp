@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -69,7 +72,7 @@ public class LoginPage extends AppCompatActivity {
 
     public void pushInfo() throws IOException{
         URL url = null;
-        try {url = new URL("http://192.168.0.173:8081/user/login");}
+        try {url = new URL("http://192.168.0.127:8080/user/login");}
         catch (MalformedURLException e ) {e.printStackTrace();}
 
         OkHttpClient client = new OkHttpClient();
@@ -95,9 +98,31 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.code()==200){
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    String userJson = response.body().string();
+
+                    // Parse the JSON string and extract user details
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    JsonNode jsonNode = objectMapper.readTree(userJson);
+
+                    // Extract user details from the JSON
+                    String id = jsonNode.get("id").asText();
+                    String fullName = jsonNode.get("fullname").asText();
+                    String username = jsonNode.get("username").asText();
+                    String isCreator = jsonNode.get("isCreator").asText();
+
+                    // Create the User instance dynamically
+                    User user = new User(id, fullName, username, isCreator);
+                    CurrentUser.setCurrentUser(user);
+                    String teste = CurrentUser.JsontoString();
+                    Log.i("USER", teste);
+                    if (user.isCreator() == false) {
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    }
+                    else {
+                        startActivity(new Intent(getApplicationContext(),AdminMain.class));
+                    }
                     finish();
-                    showToast(user);
+                    showToast(user.getUsername());
                 }
                 else{
                     Log.i("Wrong", "wrong user");
