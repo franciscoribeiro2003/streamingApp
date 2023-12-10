@@ -1,6 +1,7 @@
 package com.netflixpp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
@@ -98,7 +99,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void playVideo() {
-        String path = movie.getLinklow();
+        String path = movie.getLinkhigh();
         Uri uri = Uri.parse(path);
         player = new SimpleExoPlayer.Builder(this).build();
         DefaultDataSourceFactory dataSourceFactory = new DefaultDataSourceFactory(
@@ -187,17 +188,17 @@ public class VideoPlayerActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        /*
-        switch (v.getId()) {
-            case R.id.video_back:
-                if (player != null) {
-                    player.release();
-                }
-                finish();
-                break;
 
+        if (v.getId() == R.id.video_back) {
+            if (player != null) {
+                player.release();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
+
+            }
+            finish();
         }
-         */
+
         playerView = findViewById(R.id.exoplayer_view);
 
         // Create an instance of the OnSwipeTouchListener

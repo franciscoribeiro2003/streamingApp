@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,10 +37,57 @@ public class MainActivity extends AppCompatActivity implements MovieCatalogue.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.moviecatalogue);
 
-        RecyclerView recyclerView = findViewById(R.id.movies_rv);
+        // Initialize buttons by finding them in the layout
+        Button catalogueButton = findViewById(R.id.catalogue1);
+        Button UserPage = findViewById(R.id.userpage1);
+        Button buttonAdmin = findViewById(R.id.admin1);
 
-        Log.d("Situation", "Hereee ");
+        // Set onClickListener for Button Left
+        catalogueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Define the intent to navigate to another activity (ChangeActivity.class)
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
+                // You can add more logic or data to the intent before starting the activity if needed
+            }
+        });
+
+        // Set onClickListener for Button Right
+        UserPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Define the intent to navigate to another activity (OtherActivity.class)
+                startActivity(new Intent(getApplicationContext(),Userpage.class));
+                finish();
+                // You can add more logic or data to the intent before starting the activity if needed
+            }
+        });
+
+        // Set onClickListener for Admin Button
+        buttonAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Define the intent to navigate to another activity (AdminActivity.class)
+                if (CurrentUser.getCurrentUser().isCreator())
+                    startActivity(new Intent(getApplicationContext(),AdminMain.class));
+                finish();
+                // You can add more logic or data to the intent before starting the activity if needed
+            }
+        });
+
+        RecyclerView recyclerView = findViewById(R.id.movies_rv);
+        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
         setMovies();
+
+
 
     }
     private void setUpRecyclerView(){

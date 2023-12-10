@@ -16,6 +16,7 @@ public class AdminMain extends AppCompatActivity {
         Button upload = (Button) findViewById(R.id.uploadMovie);
         Button deleteMovie = (Button) findViewById(R.id.DeleteMovie);
         Button user_mode = (Button) findViewById(R.id.user_mode);
+        Button user_page = (Button) findViewById(R.id.gouserpage);
 
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,15 @@ public class AdminMain extends AppCompatActivity {
                 finish();
             }
         });
+
+        user_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),(Userpage.class)));
+                finish();
+            }
+        });
+
 
     }
 }

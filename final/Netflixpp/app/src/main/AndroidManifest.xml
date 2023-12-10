@@ -31,6 +31,7 @@
         <activity android:name=".UploadMovie"></activity>
         <activity android:name=".AdminMain"></activity>
         <activity android:name=".RegisterPage"></activity>
+        <activity android:name=".Userpage"></activity>
         <activity
             android:name=".VideoPlayerActivity"
             android:theme="@style/Theme.Netflixpp"></activity>
@@ -39,6 +40,10 @@
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+
 
 
 </manifest>
