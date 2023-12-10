@@ -24,7 +24,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class RegisterPage extends AppCompatActivity {
-    String ip_cloud = "localhost";
+    String ip_cloud = "192.168.0.127";
     private EditText usernametext;
     private EditText passwordtext;
     private EditText fullnametext;
@@ -117,13 +117,13 @@ public class RegisterPage extends AppCompatActivity {
         });
     }
     public String format(String user, String pass, String fulln, boolean isChecked) {
-        String contentCreator = isChecked ? "true" : "false";
+        //String contentCreator = isChecked ? "true" : "false";
+        //insert into USER (username, password, fullname, isCreator) values ('admin', 'admin', 'Admin', true);
 
-        return "{\n" +
-                "\"username\"" + ":" + "\"" + user + "\"" + ",\n" +
-                "\"password\"" + ":" + "\"" + pass + "\"" + ",\n" +
-                "\"fullname\"" + ":" + "\"" + fulln + "\"" + ",\n" +
-                "\"isContentCreator\"" + ":" + contentCreator + "\n" +
+        return "{username" + ":" + user + "," +
+                "password" + ": " + pass + "," +
+                "fullname" + ": " + fulln + "," +
+                "isContentCreator" + ": " + isChecked +
                 "}";
     }
     public void showToast(final String Text){

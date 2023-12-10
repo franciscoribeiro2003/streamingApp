@@ -1,11 +1,17 @@
 package org.netflixpp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+//import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+//import org.glassfish.jersey.media.multipart.FormDataParam;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import static org.netflixpp.ConnectionDB.*;
 
@@ -27,17 +33,14 @@ public class AccessMoviesDB {
 
 
 
-
-    //Normal User
     //Post ..../movie/search/
-    //Get .../movie
 
 
 
 
 
-    //Admin
-    //Post /movie/upload
+
+
     //sem prioridade
     //Post /movie/delete/
     //Post /user/delete
